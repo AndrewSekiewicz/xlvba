@@ -1,0 +1,18 @@
+Sub FindSean()
+'Finds all cells containing only the specified string and
+'colours them yellow and prints address to Immediate window
+Dim w As Worksheet
+Dim r As Range
+
+For Each w In Worksheets
+    For Each r In w.UsedRange
+        If Not IsError(r) Then  'necessary in case a cell has an #ERROR
+            If UCase(r) = "SEAN" Then
+                r.Interior.Color = vbYellow
+                Debug.Print "'sean\SEAN' found in " & w.name & "!" & r.Address
+            End If
+        End If
+    Next r
+Next w
+
+End Sub
